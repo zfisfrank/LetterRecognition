@@ -26,11 +26,31 @@ data = fullData.drop(['Id', 'Prediction', 'NextId', 'Position'],axis = 1)
 """this part to test current algorithms' accuracies"""
 accuracies = []
 #layerSize = [1]*1000
-for layerSize in range(100,1000,100):
+# for layerSize in range(100,1000,100):
+# # for acti in ['identity','logistic','tanh']:
+#     trainData, testData, trainTarget, testTarget = train_test_split(data,target,test_size= .5)
+#     #clf = MLPClassifier(solver='lbfgs', activation = acti,alpha=1e-5,hidden_layer_sizes=(5000), learning_rate = 'invscaling',random_state=1)
+#     clf = MLPClassifier(solver='lbfgs', activation = 'relu',alpha=1e-5,hidden_layer_sizes=layerSize, learning_rate = 'invscaling',random_state=1)
+#     #clf = Perceptron(n_jobs = -1)
+#     #clf = MLPRegressor(solver='lbfgs', alpha=1e-5, hidden_layer_sizes=(100000), random_state=1)
+#     #clf = svm.SVC(degree = 30,max_iter = -1,kernel = 'rbf')
+#     #clf = tree.DecisionTreeClassifier()
+#     #clf = neighbors.KNeighborsClassifier(26, weights='distance')
+#     clf.fit(trainData,trainTarget)
+#     #trainData, testData, trainTarget, testTarget = train_test_split(data,target,test_size= .5)
+#     Predictions = clf.predict(testData)
+#     #Predictions = round(Predictions)
+#     accuracies.append(sum(Predictions == testTarget)/len(testTarget))
+#     acc = pd.Series(accuracies)
+#     acc.to_csv('results.txt')
+#     print(layerSize)
+#     print(accuracies)
+
+for layers in range(1,5):
 # for acti in ['identity','logistic','tanh']:
     trainData, testData, trainTarget, testTarget = train_test_split(data,target,test_size= .5)
     #clf = MLPClassifier(solver='lbfgs', activation = acti,alpha=1e-5,hidden_layer_sizes=(5000), learning_rate = 'invscaling',random_state=1)
-    clf = MLPClassifier(solver='lbfgs', activation = 'relu',alpha=1e-5,hidden_layer_sizes=layerSize, learning_rate = 'invscaling',random_state=1)
+    clf = MLPClassifier(solver='lbfgs', activation = 'relu',alpha=1e-5,hidden_layer_sizes=[400]*layers, learning_rate = 'invscaling',random_state=1)
     #clf = Perceptron(n_jobs = -1)
     #clf = MLPRegressor(solver='lbfgs', alpha=1e-5, hidden_layer_sizes=(100000), random_state=1)
     #clf = svm.SVC(degree = 30,max_iter = -1,kernel = 'rbf')
@@ -45,7 +65,6 @@ for layerSize in range(100,1000,100):
     acc.to_csv('results.txt')
     print(layerSize)
     print(accuracies)
-
 # print(test_target)
 # print(clf.predict(test_data))
 
