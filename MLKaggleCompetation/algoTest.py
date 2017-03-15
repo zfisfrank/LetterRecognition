@@ -63,7 +63,7 @@ for layers in range(1,5):
     accuracies.append(sum(Predictions == testTarget)/len(testTarget))
     acc = pd.Series(accuracies)
     acc.to_csv('results.txt')
-    print(layerSize)
+    print(layers)
     print(accuracies)
 # print(test_target)
 # print(clf.predict(test_data))
