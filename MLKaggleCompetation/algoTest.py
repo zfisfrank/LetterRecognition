@@ -41,8 +41,8 @@ for layerSize in range(100,1000,100):
     Predictions = clf.predict(testData)
     #Predictions = round(Predictions)
     accuracies.append(sum(Predictions == testTarget)/len(testTarget))
-    accuracies = pd.Series(accuracies)
-    accuracies.to_csv('results.txt')
+    acc = pd.Series(accuracies)
+    acc.to_csv('results.txt')
     print(layerSize)
     print(accuracies)
 
