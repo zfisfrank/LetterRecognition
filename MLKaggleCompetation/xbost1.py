@@ -28,3 +28,6 @@ clf.fit(trainData,trainTarget)
 #bst = xgb.train(np.array(trainData), np.array(trainTarget), num_round)
 # make prediction
 preds = clf.predict(testData)
+accuracies = sum(np.array(preds) == np.array(testTarget))/len(preds)
+a=pd.Series(accuracies)
+a.to_csv('oneResult.csv')
